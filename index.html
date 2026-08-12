@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>L'Artisan Boulangerie — Tradição &amp; Elegância</title>
+<meta name="description" content="Pães de fermentação natural e pâtisserie refinada. Faça sua encomenda em L'Artisan Boulangerie." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="scroll-map.css" />
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="#inicio" class="brand">
+      <span class="material-symbols-outlined brand__icon" style="font-variation-settings: 'FILL' 1;">bakery_dining</span>
+      <span class="brand__name">L'Artisan Boulangerie</span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Navegação principal">
+      <a class="nav-link nav-link--active" href="#inicio">Início</a>
+      <a class="nav-link" href="#produtos">Produtos</a>
+      <a class="nav-link" href="#encomendas">Encomendas</a>
+      <a class="nav-link" href="#sobre">Sobre nós</a>
+      <a class="nav-link" href="#contato">Contato</a>
+    </nav>
+
+    <button class="nav-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="navMobile" aria-label="Abrir menu">
+      <span class="material-symbols-outlined" id="navToggleIcon">menu</span>
+    </button>
+  </div>
+
+  <nav class="nav-mobile" id="navMobile" aria-label="Navegação móvel" hidden>
+    <a class="nav-link nav-link--active" href="#inicio">Início</a>
+    <a class="nav-link" href="#produtos">Produtos</a>
+    <a class="nav-link" href="#encomendas">Encomendas</a>
+    <a class="nav-link" href="#sobre">Sobre nós</a>
+    <a class="nav-link" href="#contato">Contato</a>
+  </nav>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero" id="inicio">
+  <div class="hero__bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDpIG6BmBNPKiN-aLq5fLu0leCeNJ77uI_nu_e9m46SMheAHdVDyhIzTrLpg6AjsJHYZM9RTHl1sPdlH2kptXUCSfh6SYXaZp8foHsD3OmCICCNy-oaxn0d78xFsxuCNiAm5C5bJT97pll_-dRNDnxxOnE5OElys7DriB_m8mc7KORbaTHhLxkX-cRYAnXxm8tsCJ31C233dmLRVUN1f5JTCi9xZmHgZYqb4faKTgAjBP--ck3pSV6j');" role="img" aria-label="Pastéis e pães artesanais recém-assados sobre bancada de mármore"></div>
+  <div class="hero__scrim"></div>
+
+  <div class="hero__content">
+    <span class="eyebrow">Tradição &amp; Elegância</span>
+    <h1 class="hero__title">A Arte da Confeitaria em Cada Detalhe</h1>
+    <p class="hero__subtitle">
+      Ingredientes selecionados, fermentação natural e a paixão por criar momentos inesquecíveis através do paladar.
+    </p>
+    <div class="hero__actions">
+      <button class="btn btn--accent" type="button" data-scroll-to="#encomendas">Fazer Encomenda</button>
+      <button class="btn btn--outline" type="button" data-scroll-to="#produtos">Ver Menu</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Scroll Reveal (efeito estilo Apple com frame-pizza e frame-bolo) ===== -->
+<!-- ===== Scroll Reveal: Seção da Pizza ===== -->
+<section class="scroll-reveal" id="destaques-pizza">
+  <div class="scroll-reveal__pin">
+    <div class="scroll-reveal__stage">
+      <img class="scroll-reveal__img scroll-reveal__img--1" src="./frame-pizza/frame_0001.png" alt="Pizza artesanal recém-saída do forno" />
+    </div>
+    <div class="scroll-reveal__caption">
+      <span class="eyebrow">Feito à mão, todos os dias</span>
+      <h2>A Crocância Perfeita</h2>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Scroll Reveal: Seção do Bolo ===== -->
+<section class="scroll-reveal" id="destaques-bolo">
+  <div class="scroll-reveal__pin">
+    <div class="scroll-reveal__stage">
+      <img class="scroll-reveal__img scroll-reveal__img--1" src="./frame-bolo/frame_0001.png" alt="Bolo artesanal decorado" />
+    </div>
+    <div class="scroll-reveal__caption">
+      <span class="eyebrow">Doçura e Sofisticação</span>
+      <h2>Cada Criação, Uma Obra de Arte</h2>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Produtos ===== -->
+<section class="section" id="produtos">
+  <div class="container">
+    <div class="section__header">
+      <span class="eyebrow">Nosso Cardápio</span>
+      <h2 class="section-title section__title">Produtos em Destaque</h2>
+      <p class="section__desc">Uma seleção do que sai do forno todos os dias, feita com fermentação natural e ingredientes selecionados.</p>
+    </div>
+
+    <div class="product-grid">
+      <article class="product-card">
+        <div class="product-card__media" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCsQr1sWccbuvd-DQKGnfe_bzwk0vQipI538hsKyqZoj9d0FA0p8-XXEju8wEsZjIYcUA2FQBGES36yvV0tZKHJKxF6BCu_xez2ppv1gyx4mF9PwdW0U6SzLMbR7CkOu1Yfx-6Tl4x7TADh3VDv0VJdVPYDKLbC2nRVnB0gvoC95TL_Ag-m2evOWM-7eCjUZyNY6EG3s595D_tNUEWUxd4DOGnXnCo8BSUihP-oWPBlZlh7UK7kruvT');"></div>
+        <div class="product-card__body">
+          <h3 class="product-card__name">Croissant Amanteigado</h3>
+          <p class="product-card__desc">Massa folhada de 27 camadas, manteiga francesa e fermentação de 24h.</p>
+          <div class="product-card__footer">
+            <span class="product-card__price">R$ 14,00</span>
+            <button class="product-card__add" type="button" aria-label="Adicionar Croissant Amanteigado à encomenda" data-product="Croissant Amanteigado">
+              <span class="material-symbols-outlined">add</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-card__media" style="background-color: var(--color-surface-container);"></div>
+        <div class="product-card__body">
+          <h3 class="product-card__name">Pão de Fermentação Natural</h3>
+          <p class="product-card__desc">Levain de cultivo próprio, casca crocante e miolo aerado.</p>
+          <div class="product-card__footer">
+            <span class="product-card__price">R$ 22,00</span>
+            <button class="product-card__add" type="button" aria-label="Adicionar Pão de Fermentação Natural à encomenda" data-product="Pão de Fermentação Natural">
+              <span class="material-symbols-outlined">add</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-card__media" style="background-color: var(--color-surface-container);"></div>
+        <div class="product-card__body">
+          <h3 class="product-card__name">Tarte au Citron</h3>
+          <p class="product-card__desc">Creme de limão siciliano sobre base amanteigada e merengue maçaricado.</p>
+          <div class="product-card__footer">
+            <span class="product-card__price">R$ 18,00</span>
+            <button class="product-card__add" type="button" aria-label="Adicionar Tarte au Citron à encomenda" data-product="Tarte au Citron">
+              <span class="material-symbols-outlined">add</span>
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Encomendas ===== -->
+<section class="section section--muted" id="encomendas">
+  <div class="container">
+    <div class="section__header">
+      <span class="eyebrow">Encomendas</span>
+      <h2 class="section-title section__title">Faça o seu Pedido</h2>
+      <p class="section__desc">Preencha os dados abaixo e nossa equipe entra em contato para confirmar sua encomenda.</p>
+    </div>
+
+    <form class="order-form" id="orderForm" novalidate>
+      <div class="form-row form-row--two">
+        <div class="field">
+          <label for="orderName">Nome completo</label>
+          <input type="text" id="orderName" name="name" placeholder="Seu nome" required />
+        </div>
+        <div class="field">
+          <label for="orderPhone">Telefone / WhatsApp</label>
+          <input type="tel" id="orderPhone" name="phone" placeholder="(00) 00000-0000" required />
+        </div>
+      </div>
+
+      <div class="form-row form-row--two">
+        <div class="field">
+          <label for="orderProduct">Produto</label>
+          <select id="orderProduct" name="product" required>
+            <option value="" disabled selected>Selecione um produto</option>
+            <option value="Croissant Amanteigado">Croissant Amanteigado</option>
+            <option value="Pão de Fermentação Natural">Pão de Fermentação Natural</option>
+            <option value="Tarte au Citron">Tarte au Citron</option>
+            <option value="Outro">Outro (descreva abaixo)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="orderDate">Data de retirada</label>
+          <input type="date" id="orderDate" name="date" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="orderNotes">Observações</label>
+        <textarea id="orderNotes" name="notes" placeholder="Quantidade, restrições alimentares, personalizações..."></textarea>
+      </div>
+
+      <div class="form-feedback" id="orderFeedback" role="status"></div>
+
+      <button class="btn btn--primary" type="submit">Enviar Encomenda</button>
+    </form>
+  </div>
+</section>
+
+<!-- ===== Sobre ===== -->
+<section class="section" id="sobre">
+  <div class="container about">
+    <div class="about__media" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDpIG6BmBNPKiN-aLq5fLu0leCeNJ77uI_nu_e9m46SMheAHdVDyhIzTrLpg6AjsJHYZM9RTHl1sPdlH2kptXUCSfh6SYXaZp8foHsD3OmCICCNy-oaxn0d78xFsxuCNiAm5C5bJT97pll_-dRNDnxxOnE5OElys7DriB_m8mc7KORbaTHhLxkX-cRYAnXxm8tsCJ31C233dmLRVUN1f5JTCi9xZmHgZYqb4faKTgAjBP--ck3pSV6j');" role="img" aria-label="Interior da confeitaria L'Artisan Boulangerie"></div>
+    <div>
+      <span class="eyebrow">Nossa História</span>
+      <h2 class="about__title">Sobre a L'Artisan Boulangerie</h2>
+      <p class="about__text">
+        Nascemos da paixão por técnicas clássicas de panificação francesa, unidas a um olhar contemporâneo sobre sabor e apresentação. Cada receita passa por dias de preparo antes de chegar até você.
+      </p>
+      <p class="about__text">
+        Trabalhamos com fornecedores locais e ingredientes selecionados, priorizando qualidade em cada etapa — da fermentação lenta ao acabamento final.
+      </p>
+      <div class="about__stats">
+        <div class="stat">
+          <span class="stat__number">12</span>
+          <span class="stat__label">anos de tradição</span>
+        </div>
+        <div class="stat">
+          <span class="stat__number">40+</span>
+          <span class="stat__label">receitas artesanais</span>
+        </div>
+        <div class="stat">
+          <span class="stat__number">100%</span>
+          <span class="stat__label">fermentação natural</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Contato ===== -->
+<section class="section section--muted" id="contato">
+  <div class="container">
+    <div class="section__header">
+      <span class="eyebrow">Fale Conosco</span>
+      <h2 class="section-title section__title">Contato</h2>
+      <p class="section__desc">Dúvidas, encomendas especiais ou parcerias — estamos por aqui.</p>
+    </div>
+
+    <div class="contact">
+      <div class="contact-list">
+        <div class="contact-item">
+          <span class="material-symbols-outlined">location_on</span>
+          <div>
+            <p class="contact-item__title">Endereço</p>
+            <p class="contact-item__desc">Rua das Flores, 123 — Centro</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="material-symbols-outlined">schedule</span>
+          <div>
+            <p class="contact-item__title">Horário de funcionamento</p>
+            <p class="contact-item__desc">Terça a domingo, 7h às 19h</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="material-symbols-outlined">call</span>
+          <div>
+            <p class="contact-item__title">Telefone</p>
+            <p class="contact-item__desc">(00) 0000-0000</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="material-symbols-outlined">mail</span>
+          <div>
+            <p class="contact-item__title">E-mail</p>
+            <p class="contact-item__desc">contato@lartisanboulangerie.com.br</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-map">
+        <iframe
+          src="https://www.google.com/maps?q=Rua+das+Flores,123,Centro&output=embed"
+          title="Mapa de localização — L'Artisan Boulangerie"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <span class="footer-brand__name">L'Artisan Boulangerie</span>
+      <p class="footer-brand__desc">Artesanal, sofisticado, inesquecível.</p>
+      <p class="footer-brand__desc" style="margin-top: 12px;">© 2024 L'Artisan Boulangerie — Tradição e Elegância.</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Links do rodapé">
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre nós</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#encomendas">Encomendas</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- ===== WhatsApp FAB ===== -->
+<a class="whatsapp-fab" href="https://wa.me/5500000000000" target="_blank" rel="noopener" aria-label="Contato via WhatsApp">
+  <span class="material-symbols-outlined">chat</span>
+</a>
+
+<!-- ===== Bottom nav (mobile) ===== -->
+<nav class="bottom-nav" aria-label="Navegação inferior móvel">
+  <a class="bottom-nav__item bottom-nav__item--active" href="#inicio" data-bottom-nav>
+    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+    <span>Início</span>
+  </a>
+  <a class="bottom-nav__item" href="#produtos" data-bottom-nav>
+    <span class="material-symbols-outlined">bakery_dining</span>
+    <span>Produtos</span>
+  </a>
+  <a class="bottom-nav__item" href="#encomendas" data-bottom-nav>
+    <span class="material-symbols-outlined">shopping_cart</span>
+    <span>Encomendar</span>
+  </a>
+  <a class="bottom-nav__item" href="#sobre" data-bottom-nav>
+    <span class="material-symbols-outlined">auto_awesome_mosaic</span>
+    <span>Sobre</span>
+  </a>
+  <a class="bottom-nav__item" href="#contato" data-bottom-nav>
+    <span class="material-symbols-outlined">contact_support</span>
+    <span>Contato</span>
+  </a>
+</nav>
+
+<script src="script.js"></script>
+</body>
+</html>
