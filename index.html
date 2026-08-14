@@ -20,12 +20,13 @@
   <div class="container site-header__inner">
     <a href="index.html" class="brand">
       <img src="assets/logo.png" alt="L'Artisan Boulangerie" class="brand__logo">
+      <span class="brand__name">L'Artisan Boulangerie</span>
     </a>
 
     <nav class="nav-desktop" aria-label="Navegação principal">
       <a class="nav-link nav-link--active" href="index.html">Início</a>
       <a class="nav-link" href="produtos.html">Produtos</a>
-      <a class="nav-link" href="#sobre">Sobre nós</a>
+      <a class="nav-link" href="./encomendas.html">Encomendas</a>
       <a class="nav-link" href="#contato">Contato</a>
     </nav>
 
@@ -61,15 +62,15 @@
 </section>
 
 <!-- ===== Scroll Reveal (efeito estilo Apple com canvas, igual ao projeto do salão) ===== -->
-<!-- ===== Scroll Reveal: Seção da Pizza ===== -->
-<section class="scroll-reveal" id="destaques-pizza">
+<!-- ===== Scroll Reveal: Seção da Cuca ===== -->
+<section class="scroll-reveal" id="destaques-cuca">
   <div class="scroll-reveal__pin">
     <div class="scroll-reveal__stage">
-      <canvas class="scroll-reveal__canvas" id="canvas-pizza" aria-label="Pizza artesanal recém-saída do forno"></canvas>
+      <canvas class="scroll-reveal__canvas" id="canvas-cuca" aria-label="Cuca recheada artesanal recém-saída do forno"></canvas>
     </div>
     <div class="scroll-reveal__caption">
-      <span class="eyebrow">Feito à mão, todos os dias</span>
-      <h2>A Crocância Perfeita</h2>
+      <span class="eyebrow">Tradição e Sabor</span>
+      <h2>A Cuca Recheada Perfeita</h2>
     </div>
   </div>
 </section>
@@ -83,6 +84,19 @@
     <div class="scroll-reveal__caption">
       <span class="eyebrow">Doçura e Sofisticação</span>
       <h2>Cada Criação, Uma Obra de Arte</h2>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Scroll Reveal: Seção da Pizza ===== -->
+<section class="scroll-reveal" id="destaques-pizza">
+  <div class="scroll-reveal__pin">
+    <div class="scroll-reveal__stage">
+      <canvas class="scroll-reveal__canvas" id="canvas-pizza" aria-label="Pizza artesanal recém-saída do forno"></canvas>
+    </div>
+    <div class="scroll-reveal__caption">
+      <span class="eyebrow">Feito à mão, todos os dias</span>
+      <h2>A Crocância Perfeita</h2>
     </div>
   </div>
 </section>
@@ -109,64 +123,6 @@
           <span class="stat__number">40+</span>
           <span class="stat__label">receitas artesanais</span>
         </div>
-        <div class="stat">
-          <span class="stat__number">100%</span>
-          <span class="stat__label">fermentação natural</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Contato ===== -->
-<section class="section section--muted" id="contato">
-  <div class="container">
-    <div class="section__header">
-      <span class="eyebrow">Fale Conosco</span>
-      <h2 class="section-title section__title">Contato</h2>
-      <p class="section__desc">Dúvidas, encomendas especiais ou parcerias — estamos por aqui.</p>
-    </div>
-
-    <div class="contact">
-      <div class="contact-list">
-        <div class="contact-item">
-          <span class="material-symbols-outlined">location_on</span>
-          <div>
-            <p class="contact-item__title">Endereço</p>
-            <p class="contact-item__desc">Rua das Flores, 123 — Centro</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <span class="material-symbols-outlined">schedule</span>
-          <div>
-            <p class="contact-item__title">Horário de funcionamento</p>
-            <p class="contact-item__desc">Terça a domingo, 7h às 19h</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <span class="material-symbols-outlined">call</span>
-          <div>
-            <p class="contact-item__title">Telefone</p>
-            <p class="contact-item__desc">(00) 0000-0000</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <span class="material-symbols-outlined">mail</span>
-          <div>
-            <p class="contact-item__title">E-mail</p>
-            <p class="contact-item__desc">contato@lartisanboulangerie.com.br</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="contact-map">
-        <iframe
-          src="https://www.google.com/maps?q=Rua+das+Flores,123,Centro&output=embed"
-          title="Mapa de localização — L'Artisan Boulangerie"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen>
-        </iframe>
       </div>
     </div>
   </div>
@@ -180,14 +136,21 @@
       <p class="footer-brand__desc">Artesanal, sofisticado, inesquecível.</p>
       <p class="footer-brand__desc" style="margin-top: 12px;">© 2024 L'Artisan Boulangerie — Tradição e Elegância.</p>
     </div>
-
-    <nav class="footer-nav" aria-label="Links do rodapé">
-      <a href="#inicio">Início</a>
-      <a href="#sobre">Sobre nós</a>
-      <a href="#produtos">Produtos</a>
-      <a href="#encomendas">Encomendas</a>
-      <a href="#contato">Contato</a>
-    </nav>
+    <!-- ===== Contato ===== -->
+<section class="section section--muted" id="contato">
+  <div class="container">
+      <div class="contact-map">
+        <iframe
+          src="https://www.google.com/maps?q=Rua+das+Flores,123,Centro&output=embed"
+          title="Mapa de localização — L'Artisan Boulangerie"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
   </div>
 </footer>
 

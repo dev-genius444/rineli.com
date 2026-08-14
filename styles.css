@@ -165,10 +165,26 @@ body {
   gap: 32px;
 }
 
+/* Organiza o link da marca para alinhar os itens horizontalmente */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaço entre a logo e o texto */
+  text-decoration: none;
+}
+
+/* Controla o tamanho da imagem da logo */
 .brand__logo {
-  height: 40px; /* Ajuste para o tamanho ideal no seu layout */
+  height: 40px; /* Ajuste a altura conforme necessário */
   width: auto;
   display: block;
+}
+
+/* Estiliza o texto ao lado da logo */
+.brand__name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333; /* Altere para a cor desejada do seu tema */
 }
 
 @media (min-width: 768px) {
@@ -522,48 +538,6 @@ body {
 .stat__label {
   font-size: 13px;
   color: var(--color-on-surface-variant);
-}
-
-/* ---------- Contato ---------- */
-.contact {
-  display: grid;
-  gap: var(--gutter);
-}
-
-@media (min-width: 900px) {
-  .contact { grid-template-columns: 1fr 1fr; }
-}
-
-.contact-list { display: grid; gap: 20px; }
-
-.contact-item {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-}
-
-.contact-item .material-symbols-outlined {
-  color: var(--color-primary-container);
-  background-color: var(--color-surface-container);
-  border-radius: var(--radius-full);
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.contact-item__title {
-  font-weight: 600;
-  color: var(--color-tertiary);
-  margin: 0 0 2px;
-}
-
-.contact-item__desc {
-  color: var(--color-on-surface-variant);
-  font-size: 14px;
-  margin: 0;
 }
 
 /* ---------- Mapa de localização ---------- */

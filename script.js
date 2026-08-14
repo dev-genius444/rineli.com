@@ -158,7 +158,18 @@ function initAppleScrollFrames() {
   // Configuração das seções e quantidade total de frames extraídos.
   // IMPORTANTE: ajuste totalFrames para o número EXATO de arquivos que você
   // realmente tem em cada pasta (frame_0001.png até frame_00XX.png).
+// Configuração das seções e quantidade total de frames extraídos.
+  // IMPORTANTE: ajuste totalFrames para o número EXATO de arquivos que você
+  // realmente tem em cada pasta (frame_0001.png até frame_00XX.png).
   const configs = [
+    {
+      sectionId: 'destaques-cuca',
+      canvasId: 'canvas-cuca',
+      folderPath: './frame-cuca',
+      totalFrames: 300, // Ajuste para a quantidade exata de frames da cuca
+      prefix: 'frame_',
+      extension: '.png'
+    },
     {
       sectionId: 'destaques-pizza',
       canvasId: 'canvas-pizza',
