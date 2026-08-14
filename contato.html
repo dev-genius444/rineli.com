@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="contato.css" />
 </head>
 <body>
 
@@ -41,82 +41,6 @@
     <a class="nav-link" href="#contato">Contato</a>
   </nav>
 </header>
-
-<!-- ===== Hero ===== -->
-<section class="hero" id="inicio">
-  <div class="hero__bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDpIG6BmBNPKiN-aLq5fLu0leCeNJ77uI_nu_e9m46SMheAHdVDyhIzTrLpg6AjsJHYZM9RTHl1sPdlH2kptXUCSfh6SYXaZp8foHsD3OmCICCNy-oaxn0d78xFsxuCNiAm5C5bJT97pll_-dRNDnxxOnE5OElys7DriB_m8mc7KORbaTHhLxkX-cRYAnXxm8tsCJ31C233dmLRVUN1f5JTCi9xZmHgZYqb4faKTgAjBP--ck3pSV6j');" role="img" aria-label="Pastéis e pães artesanais recém-assados sobre bancada de mármore"></div>
-  <div class="hero__scrim"></div>
-
-  <div class="hero__content">
-    <span class="eyebrow">Tradição &amp; Elegância</span>
-    <h1 class="hero__title">A Arte da Confeitaria em Cada Detalhe</h1>
-    <p class="hero__subtitle">
-      Ingredientes selecionados, fermentação natural e a paixão por criar momentos inesquecíveis através do paladar.
-    </p>
-    <div class="hero__actions">
-      <button class="btn btn--accent" type="button" data-scroll-to="#encomendas">Fazer Encomenda</button>
-      <button class="btn btn--outline" type="button" data-scroll-to="#produtos">Ver Menu</button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Scroll Reveal (efeito estilo Apple com canvas, igual ao projeto do salão) ===== -->
-<!-- ===== Scroll Reveal: Seção da Pizza ===== -->
-<section class="scroll-reveal" id="destaques-pizza">
-  <div class="scroll-reveal__pin">
-    <div class="scroll-reveal__stage">
-      <canvas class="scroll-reveal__canvas" id="canvas-pizza" aria-label="Pizza artesanal recém-saída do forno"></canvas>
-    </div>
-    <div class="scroll-reveal__caption">
-      <span class="eyebrow">Feito à mão, todos os dias</span>
-      <h2>A Crocância Perfeita</h2>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Scroll Reveal: Seção do Bolo ===== -->
-<section class="scroll-reveal" id="destaques-bolo">
-  <div class="scroll-reveal__pin">
-    <div class="scroll-reveal__stage">
-      <canvas class="scroll-reveal__canvas" id="canvas-bolo" aria-label="Bolo artesanal decorado"></canvas>
-    </div>
-    <div class="scroll-reveal__caption">
-      <span class="eyebrow">Doçura e Sofisticação</span>
-      <h2>Cada Criação, Uma Obra de Arte</h2>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Sobre ===== -->
-<section class="section" id="sobre">
-  <div class="container about">
-    <div class="about__media" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDpIG6BmBNPKiN-aLq5fLu0leCeNJ77uI_nu_e9m46SMheAHdVDyhIzTrLpg6AjsJHYZM9RTHl1sPdlH2kptXUCSfh6SYXaZp8foHsD3OmCICCNy-oaxn0d78xFsxuCNiAm5C5bJT97pll_-dRNDnxxOnE5OElys7DriB_m8mc7KORbaTHhLxkX-cRYAnXxm8tsCJ31C233dmLRVUN1f5JTCi9xZmHgZYqb4faKTgAjBP--ck3pSV6j');" role="img" aria-label="Interior da confeitaria L'Artisan Boulangerie"></div>
-    <div>
-      <span class="eyebrow">Nossa História</span>
-      <h2 class="about__title">Sobre a L'Artisan Boulangerie</h2>
-      <p class="about__text">
-        Nascemos da paixão por técnicas clássicas de panificação francesa, unidas a um olhar contemporâneo sobre sabor e apresentação. Cada receita passa por dias de preparo antes de chegar até você.
-      </p>
-      <p class="about__text">
-        Trabalhamos com fornecedores locais e ingredientes selecionados, priorizando qualidade em cada etapa — da fermentação lenta ao acabamento final.
-      </p>
-      <div class="about__stats">
-        <div class="stat">
-          <span class="stat__number">12</span>
-          <span class="stat__label">anos de tradição</span>
-        </div>
-        <div class="stat">
-          <span class="stat__number">40+</span>
-          <span class="stat__label">receitas artesanais</span>
-        </div>
-        <div class="stat">
-          <span class="stat__number">100%</span>
-          <span class="stat__label">fermentação natural</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ===== Contato ===== -->
 <section class="section section--muted" id="contato">
@@ -198,8 +122,8 @@
 
 <!-- ===== Bottom nav (mobile) ===== -->
 <nav class="bottom-nav" aria-label="Navegação inferior móvel">
-  <a class="bottom-nav__item bottom-nav__item--active" href="index.html" data-bottom-nav>
-    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+  <a class="bottom-nav__item" href="index.html" data-bottom-nav>
+    <span class="material-symbols-outlined">home</span>
     <span>Início</span>
   </a>
   <a class="bottom-nav__item" href="produtos.html" data-bottom-nav>
@@ -210,8 +134,8 @@
   <span class="material-symbols-outlined">shopping_bag</span>
   <span>Encomendas</span>
 </a>
-  <a class="bottom-nav__item" href="contato.html" data-bottom-nav>
-    <span class="material-symbols-outlined">contact_support</span>
+  <a class="bottom-nav__item bottom-nav__item--active" href="index.html" data-bottom-nav>
+    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">contact_support</span>
     <span>Contatos</span>
   </a>
 </nav>
