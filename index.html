@@ -12,7 +12,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="styles.css" />
-<link rel="stylesheet" href="scroll-map.css" />
 </head>
 <body>
 
@@ -64,12 +63,12 @@
   </div>
 </section>
 
-<!-- ===== Scroll Reveal (efeito estilo Apple com frame-pizza e frame-bolo) ===== -->
+<!-- ===== Scroll Reveal (efeito estilo Apple com canvas, igual ao projeto do salão) ===== -->
 <!-- ===== Scroll Reveal: Seção da Pizza ===== -->
 <section class="scroll-reveal" id="destaques-pizza">
   <div class="scroll-reveal__pin">
     <div class="scroll-reveal__stage">
-      <img class="scroll-reveal__img scroll-reveal__img--1" src="./frame-pizza/frame_0001.png" alt="Pizza artesanal recém-saída do forno" />
+      <canvas class="scroll-reveal__canvas" id="canvas-pizza" aria-label="Pizza artesanal recém-saída do forno"></canvas>
     </div>
     <div class="scroll-reveal__caption">
       <span class="eyebrow">Feito à mão, todos os dias</span>
@@ -82,7 +81,7 @@
 <section class="scroll-reveal" id="destaques-bolo">
   <div class="scroll-reveal__pin">
     <div class="scroll-reveal__stage">
-      <img class="scroll-reveal__img scroll-reveal__img--1" src="./frame-bolo/frame_0001.png" alt="Bolo artesanal decorado" />
+      <canvas class="scroll-reveal__canvas" id="canvas-bolo" aria-label="Bolo artesanal decorado"></canvas>
     </div>
     <div class="scroll-reveal__caption">
       <span class="eyebrow">Doçura e Sofisticação</span>

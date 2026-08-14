@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initScrollSpy();
   initOrderForm();
-  
-  // Inicializa o efeito Apple de troca de frames
+
+  // Inicializa o efeito Apple de troca de frames (via canvas)
   initAppleScrollFrames();
 });
 
@@ -147,24 +147,31 @@ function initOrderForm() {
   });
 }
 
-/* ---------- Efeito Apple Scroll: Animação de Sequência de Frames ---------- */
+/* ---------- Efeito Apple Scroll: Animação de Sequência de Frames (via canvas) ----------
+   Mesma técnica usada no projeto do salão: pré-carrega os frames como objetos
+   Image() na memória e desenha cada um em um <canvas> com drawImage(), evitando
+   o overhead de decode/paint que ocorre ao trocar o src de uma <img> a cada frame. */
 function initAppleScrollFrames() {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) return;
 
-  // Configuração das seções e quantidade total de frames extraídos
+  // Configuração das seções e quantidade total de frames extraídos.
+  // IMPORTANTE: ajuste totalFrames para o número EXATO de arquivos que você
+  // realmente tem em cada pasta (frame_0001.png até frame_00XX.png).
   const configs = [
     {
       sectionId: 'destaques-pizza',
+      canvasId: 'canvas-pizza',
       folderPath: './frame-pizza',
-      totalFrames: 300, // Ajuste para a quantidade exata de frames salvos
+      totalFrames: 300,
       prefix: 'frame_',
       extension: '.png'
     },
     {
       sectionId: 'destaques-bolo',
+      canvasId: 'canvas-bolo',
       folderPath: './frame-bolo',
-      totalFrames: 300, // Ajuste para a quantidade exata de frames salvos
+      totalFrames: 300,
       prefix: 'frame_',
       extension: '.png'
     }
@@ -172,45 +179,80 @@ function initAppleScrollFrames() {
 
   configs.forEach((config) => {
     const section = document.getElementById(config.sectionId);
-    if (!section) return;
+    const canvas = document.getElementById(config.canvasId);
+    if (!section || !canvas) return;
 
-    const imgElement = section.querySelector('.scroll-reveal__img');
+    const ctx = canvas.getContext('2d');
     const caption = section.querySelector('.scroll-reveal__caption');
-    if (!imgElement) return;
 
-    // Array para armazenar as imagens pré-carregadas na memória RAM
-    const preloadedImages = [];
-
-    // Função para formatar o número do arquivo com zeros à esquerda (ex: frame_0001.png)
     const getFramePath = (index) => {
       const paddedIndex = String(index).padStart(4, '0');
       return `${config.folderPath}/${config.prefix}${paddedIndex}${config.extension}`;
     };
 
-    // Pré-carregamento dos 300 frames para eliminar atrasos na rolagem
+    // Pré-carregamento dos frames para eliminar atrasos na rolagem
+    const images = [];
+    let carregadas = 0;
+    let imagensProntas = false;
+
     for (let i = 1; i <= config.totalFrames; i++) {
       const img = new Image();
       img.src = getFramePath(i);
-      preloadedImages.push(img);
+      img.onload = () => {
+        carregadas++;
+        if (carregadas === config.totalFrames) {
+          imagensProntas = true;
+        }
+      };
+      images.push(img);
     }
+
+    let currentFrameIndex = 1;
+
+    const renderFrame = (index) => {
+      const img = images[index - 1];
+      if (img && img.complete && img.naturalWidth > 0) {
+        // Desenha usando o tamanho lógico (CSS) do canvas — o contexto já
+        // está escalado pelo devicePixelRatio via setTransform.
+        const cssWidth = canvas.clientWidth;
+        const cssHeight = canvas.clientHeight;
+        ctx.clearRect(0, 0, cssWidth, cssHeight);
+        ctx.drawImage(img, 0, 0, cssWidth, cssHeight);
+      }
+    };
+
+    // Ajusta o canvas para a resolução real da tela (nítido em qualquer dispositivo)
+    const updateCanvasSize = () => {
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = canvas.clientWidth * dpr;
+      canvas.height = canvas.clientHeight * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      renderFrame(currentFrameIndex);
+    };
 
     let ticking = false;
 
-    function updateFrame() {
+    const updateFrame = () => {
       const rect = section.getBoundingClientRect();
       const totalScrollableHeight = section.offsetHeight - window.innerHeight;
 
-      if (totalScrollableHeight <= 0) return;
+      if (totalScrollableHeight <= 0) {
+        ticking = false;
+        return;
+      }
 
-      // Calcula o progresso do scroll de 0.0 a 1.0 dentro da seção
       let progress = -rect.top / totalScrollableHeight;
       progress = Math.min(Math.max(progress, 0), 1);
 
-      // Mapeia o progresso do scroll para o índice do frame (1 até totalFrames)
-      const frameIndex = Math.floor(progress * (config.totalFrames - 1)) + 1;
+      const frameIndex = Math.min(
+        config.totalFrames,
+        Math.max(1, Math.floor(progress * (config.totalFrames - 1)) + 1)
+      );
+      currentFrameIndex = frameIndex;
 
-      // Atualiza a imagem exibida na tela
-      imgElement.src = getFramePath(frameIndex);
+      if (imagensProntas || (images[frameIndex - 1] && images[frameIndex - 1].complete)) {
+        requestAnimationFrame(() => renderFrame(currentFrameIndex));
+      }
 
       // Opacidade dinâmica da legenda/texto
       if (caption) {
@@ -219,17 +261,19 @@ function initAppleScrollFrames() {
       }
 
       ticking = false;
-    }
+    };
 
-    function onScroll() {
+    const onScroll = () => {
       if (!ticking) {
         requestAnimationFrame(updateFrame);
         ticking = true;
       }
-    }
+    };
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
+    window.addEventListener('resize', updateCanvasSize);
+
+    updateCanvasSize();
     updateFrame();
   });
 }
