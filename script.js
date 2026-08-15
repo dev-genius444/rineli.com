@@ -148,9 +148,16 @@ function initOrderForm() {
 }
 
 /* ---------- Efeito Apple Scroll: Animação de Sequência de Frames (via canvas) ----------
-   Mesma técnica usada no projeto do salão: pré-carrega os frames como objetos
-   Image() na memória e desenha cada um em um <canvas> com drawImage(), evitando
-   o overhead de decode/paint que ocorre ao trocar o src de uma <img> a cada frame. */
+   Pré-carrega os frames como objetos Image() na memória e desenha cada um em
+   um <canvas> com drawImage(), evitando o overhead de decode/paint que ocorre
+   ao trocar o src de uma <img> a cada frame.
+
+   Otimizações de velocidade:
+   1) Só a 1ª seção começa a carregar de cara; as demais só começam a baixar
+      quando estão perto de entrar na tela (IntersectionObserver).
+   2) Concorrência limitada (poucos downloads simultâneos por seção) em vez
+      de disparar as 300 requisições de uma vez.
+   3) O frame 1 tem prioridade alta e aparece como fundo CSS instantâneo. */
 function initAppleScrollFrames() {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) return;
@@ -158,22 +165,11 @@ function initAppleScrollFrames() {
   // Configuração das seções e quantidade total de frames extraídos.
   // IMPORTANTE: ajuste totalFrames para o número EXATO de arquivos que você
   // realmente tem em cada pasta (frame_0001.png até frame_00XX.png).
-// Configuração das seções e quantidade total de frames extraídos.
-  // IMPORTANTE: ajuste totalFrames para o número EXATO de arquivos que você
-  // realmente tem em cada pasta (frame_0001.png até frame_00XX.png).
   const configs = [
     {
       sectionId: 'destaques-cuca',
       canvasId: 'canvas-cuca',
       folderPath: './frame-cuca',
-      totalFrames: 300, // Ajuste para a quantidade exata de frames da cuca
-      prefix: 'frame_',
-      extension: '.png'
-    },
-    {
-      sectionId: 'destaques-pizza',
-      canvasId: 'canvas-pizza',
-      folderPath: './frame-pizza',
       totalFrames: 300,
       prefix: 'frame_',
       extension: '.png'
@@ -185,10 +181,23 @@ function initAppleScrollFrames() {
       totalFrames: 300,
       prefix: 'frame_',
       extension: '.png'
+    },
+    {
+      sectionId: 'destaques-pizza',
+      canvasId: 'canvas-pizza',
+      folderPath: './frame-pizza',
+      totalFrames: 300,
+      prefix: 'frame_',
+      extension: '.png'
     }
   ];
 
-  configs.forEach((config) => {
+  // Quantos frames podem baixar ao mesmo tempo por seção. Baixar as 300
+  // imagens de uma vez só faz elas brigarem por banda — em lotes, os
+  // frames iniciais (que o usuário vê primeiro) ficam prontos muito antes.
+  const CONCORRENCIA = 8;
+
+  configs.forEach((config, configIndex) => {
     const section = document.getElementById(config.sectionId);
     const canvas = document.getElementById(config.canvasId);
     if (!section || !canvas) return;
@@ -201,24 +210,18 @@ function initAppleScrollFrames() {
       return `${config.folderPath}/${config.prefix}${paddedIndex}${config.extension}`;
     };
 
-    // Pré-carregamento dos frames para eliminar atrasos na rolagem
-    const images = [];
+    // Mostra o frame 1 como fundo CSS imediatamente — o navegador busca essa
+    // imagem isolada e com prioridade alta, então aparece bem antes do
+    // restante. Some visualmente assim que o canvas desenha por cima.
+    canvas.style.backgroundImage = `url('${getFramePath(1)}')`;
+    canvas.style.backgroundSize = 'cover';
+    canvas.style.backgroundPosition = 'center';
+
+    const images = new Array(config.totalFrames);
     let carregadas = 0;
     let imagensProntas = false;
-
-    for (let i = 1; i <= config.totalFrames; i++) {
-      const img = new Image();
-      img.src = getFramePath(i);
-      img.onload = () => {
-        carregadas++;
-        if (carregadas === config.totalFrames) {
-          imagensProntas = true;
-        }
-      };
-      images.push(img);
-    }
-
     let currentFrameIndex = 1;
+    let carregamentoIniciado = false;
 
     const renderFrame = (index) => {
       const img = images[index - 1];
@@ -231,6 +234,56 @@ function initAppleScrollFrames() {
         ctx.drawImage(img, 0, 0, cssWidth, cssHeight);
       }
     };
+
+    const carregarFrame = (i) => new Promise((resolve) => {
+      const img = new Image();
+      if (i === 1) img.fetchPriority = 'high';
+      img.decoding = 'async';
+      img.onload = img.onerror = () => {
+        carregadas++;
+        if (carregadas === config.totalFrames) imagensProntas = true;
+        // Assim que o frame que está visível no momento termina de carregar,
+        // desenha na hora — não espera as outras 299 imagens.
+        if (i === currentFrameIndex) renderFrame(currentFrameIndex);
+        resolve();
+      };
+      img.src = getFramePath(i);
+      images[i - 1] = img;
+    });
+
+    // Fila com concorrência limitada: só CONCORRENCIA downloads simultâneos,
+    // em vez de disparar as 300 requisições de uma vez.
+    const carregarTodosFrames = () => {
+      if (carregamentoIniciado) return;
+      carregamentoIniciado = true;
+
+      let proximo = 1;
+      const worker = async () => {
+        while (proximo <= config.totalFrames) {
+          const i = proximo++;
+          await carregarFrame(i);
+        }
+      };
+      Array.from({ length: CONCORRENCIA }, worker);
+    };
+
+    // A 1ª seção (a que aparece primeiro na página) começa a carregar assim
+    // que o DOM está pronto. As demais só começam quando estão prestes a
+    // entrar na tela — evita competir por banda com frames que o usuário
+    // ainda nem vai ver tão cedo.
+    if (configIndex === 0) {
+      carregarTodosFrames();
+    } else {
+      const preloadObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            carregarTodosFrames();
+            preloadObserver.disconnect();
+          }
+        });
+      }, { rootMargin: '100% 0px 100% 0px' });
+      preloadObserver.observe(section);
+    }
 
     // Ajusta o canvas para a resolução real da tela (nítido em qualquer dispositivo)
     const updateCanvasSize = () => {
@@ -263,6 +316,10 @@ function initAppleScrollFrames() {
 
       if (imagensProntas || (images[frameIndex - 1] && images[frameIndex - 1].complete)) {
         requestAnimationFrame(() => renderFrame(currentFrameIndex));
+      } else if (!carregamentoIniciado) {
+        // Scroll rápido demais chegou nessa seção antes do IntersectionObserver
+        // disparar — força o início do carregamento na hora.
+        carregarTodosFrames();
       }
 
       // Opacidade dinâmica da legenda/texto
