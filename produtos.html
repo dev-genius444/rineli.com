@@ -1,259 +1,300 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Produtos — L'Artisan Boulangerie</title>
-<meta name="description" content="Confira todos os produtos da L'Artisan Boulangerie: pães, doces, salgados e bebidas artesanais." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produtos — L'Artisan Boulangerie</title>
+  <meta name="description"
+    content="Confira todos os produtos da L'Artisan Boulangerie: pães, doces, salgados e bebidas artesanais." />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
 
-<link rel="stylesheet" href="produtos.css" />
+  <link rel="stylesheet" href="produtos.css" />
 </head>
+
 <body>
 
-<!-- ===== Header ===== -->
-<header class="site-header">
-  <div class="container site-header__inner">
-    <a href="index.html" class="brand">
-      <img src="assets/logo.png" alt="L'Artisan Boulangerie" class="brand__logo">
-      <span class="brand__name">Nossos Produtos</span>
-    </a>
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="brand">
+        <img src="assets/logo.png" alt="L'Artisan Boulangerie" class="brand__logo">
+        <span class="brand__name">Nossos Produtos</span>
+      </a>
 
-    <nav class="nav-desktop" aria-label="Navegação principal">
+      <nav class="nav-desktop" aria-label="Navegação principal">
+        <a class="nav-link" href="index.html">Início</a>
+        <a class="nav-link nav-link--active" href="produtos.html">Produtos</a>
+        <a class="nav-link" href="./encomendas.html">Encomendas</a>
+        <a class="nav-link" href="contato.html">Contato</a>
+      </nav>
+
+      <button class="nav-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="navMobile"
+        aria-label="Abrir menu">
+        <span class="material-symbols-outlined" id="navToggleIcon">menu</span>
+      </button>
+    </div>
+
+    <nav class="nav-mobile" id="navMobile" aria-label="Navegação móvel" hidden>
       <a class="nav-link" href="index.html">Início</a>
       <a class="nav-link nav-link--active" href="produtos.html">Produtos</a>
       <a class="nav-link" href="./encomendas.html">Encomendas</a>
       <a class="nav-link" href="contato.html">Contato</a>
     </nav>
+  </header>
 
-    <button class="nav-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="navMobile" aria-label="Abrir menu">
-      <span class="material-symbols-outlined" id="navToggleIcon">menu</span>
-    </button>
+  <!-- ===== Barra de busca + filtros (fixa no topo, abaixo do header) ===== -->
+  <div class="product-toolbar" id="productToolbar">
+    <div class="container product-toolbar__inner">
+
+      <label class="product-search" for="productSearch">
+        <span class="material-symbols-outlined product-search__icon">search</span>
+        <input type="search" id="productSearch" class="product-search__input" placeholder="Buscar produto..."
+          aria-label="Buscar produto" autocomplete="off" />
+      </label>
+
+      <div class="product-filters" id="productFilters" role="group" aria-label="Filtrar por categoria">
+        <button type="button" class="product-filters__chip product-filters__chip--active"
+          data-filter="todos">Todos</button>
+        <button type="button" class="product-filters__chip" data-filter="paes">Pães</button>
+        <button type="button" class="product-filters__chip" data-filter="doces">Doces</button>
+        <button type="button" class="product-filters__chip" data-filter="salgados">Salgados</button>
+        <button type="button" class="product-filters__chip" data-filter="bebidas">Bebidas</button>
+      </div>
+
+    </div>
   </div>
 
-  <nav class="nav-mobile" id="navMobile" aria-label="Navegação móvel" hidden>
-    <a class="nav-link" href="index.html">Início</a>
-    <a class="nav-link nav-link--active" href="produtos.html">Produtos</a>
-    <a class="nav-link" href="./encomendas.html">Encomendas</a>
-    <a class="nav-link" href="contato.html">Contato</a>
+  <!-- ===== Produtos ===== -->
+  <section class="section" id="produtos">
+    <div class="container">
+      <div class="section__header">
+        <span class="eyebrow">Nosso Cardápio</span>
+        <h2 class="section-title section__title">Produtos em Destaque</h2>
+        <p class="section__desc">Uma seleção do que sai do forno todos os dias, feita com fermentação natural e
+          ingredientes selecionados.</p>
+      </div>
+
+      <p class="product-empty" id="productEmpty" hidden>Nenhum produto encontrado para essa busca.</p>
+
+      <div class="product-grid" id="productGrid">
+
+        <article class="product-card" data-category="doces" data-name="croissant amanteigado"
+          data-slug="croissant-amanteigado">
+          <div class="product-card__media"
+            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCsQr1sWccbuvd-DQKGnfe_bzwk0vQipI538hsKyqZoj9d0FA0p8-XXEju8wEsZjIYcUA2FQBGES36yvV0tZKHJKxF6BCu_xez2ppv1gyx4mF9PwdW0U6SzLMbR7CkOu1Yfx-6Tl4x7TADh3VDv0VJdVPYDKLbC2nRVnB0gvoC95TL_Ag-m2evOWM-7eCjUZyNY6EG3s595D_tNUEWUxd4DOGnXnCo8BSUihP-oWPBlZlh7UK7kruvT');">
+          </div>
+          <div class="product-card__body">
+            <span class="product-card__tag">Doce</span>
+            <h3 class="product-card__name">Croissant Amanteigado</h3>
+            <p class="product-card__desc">Massa folhada de 27 camadas, manteiga francesa e fermentação de 24h.</p>
+            <div class="product-card__footer">
+              <span class="product-card__price">R$ 14,00</span>
+              <button class="product-card__add" type="button" aria-label="Adicionar Croissant Amanteigado à encomenda"
+                data-product="Croissant Amanteigado">
+                <span class="material-symbols-outlined">add</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="paes" data-name="pao de fermentacao natural"
+          data-slug="pao-fermentacao-natural">
+          <div class="product-card__media"
+            style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80');">
+          </div>
+          <div class="product-card__body">
+            <span class="product-card__tag">Pão</span>
+            <h3 class="product-card__name">Pão de Fermentação Natural</h3>
+            <p class="product-card__desc">Levain de cultivo próprio, casca crocante e miolo aerado.</p>
+            <div class="product-card__footer">
+              <span class="product-card__price">R$ 22,00</span>
+              <button class="product-card__add" type="button"
+                aria-label="Adicionar Pão de Fermentação Natural à encomenda" data-product="Pão de Fermentação Natural">
+                <span class="material-symbols-outlined">add</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="doces" data-name="tarte au citron" data-slug="tarte-au-citron">
+          <div class="product-card__media"
+            style="background-image: url('https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1200&q=80');">
+          </div>
+          <div class="product-card__body">
+            <span class="product-card__tag">Doce</span>
+            <h3 class="product-card__name">Tarte au Citron</h3>
+            <p class="product-card__desc">Creme de limão siciliano sobre base amanteigada e merengue maçaricado.</p>
+            <div class="product-card__footer">
+              <span class="product-card__price">R$ 18,00</span>
+              <button class="product-card__add" type="button" aria-label="Adicionar Tarte au Citron à encomenda"
+                data-product="Tarte au Citron">
+                <span class="material-symbols-outlined">add</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="paes" data-name="baguete tradicional"
+          data-slug="baguete-tradicional">
+          <div class="product-card__media"
+            style="background-image: url('https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=1200&q=80');">
+          </div>
+          <div class="product-card__body">
+            <span class="product-card__tag">Pão</span>
+            <h3 class="product-card__name">Baguete Tradicional</h3>
+            <p class="product-card__desc">Receita clássica francesa, casca dourada e crocante por fora.</p>
+            <div class="product-card__footer">
+              <span class="product-card__price">R$ 12,00</span>
+              <button class="product-card__add" type="button" aria-label="Adicionar Baguete Tradicional à encomenda"
+                data-product="Baguete Tradicional">
+                <span class="material-symbols-outlined">add</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="salgados" data-name="quiche de queijo e ervas"
+          data-slug="quiche-queijo-ervas">
+          <div class="product-card__media"
+            style="background-image: url('https://images.unsplash.com/photo-1623334044303-241021148842?auto=format&fit=crop&w=1200&q=80');">
+          </div>
+          <div class="product-card__body">
+            <span class="product-card__tag">Salgado</span>
+            <h3 class="product-card__name">Quiche de Queijo e Ervas</h3>
+            <p class="product-card__desc">Massa amanteigada com recheio cremoso de queijos e ervas finas.</p>
+            <div class="product-card__footer">
+              <span class="product-card__price">R$ 16,00</span>
+              <button class="product-card__add" type="button"
+                aria-label="Adicionar Quiche de Queijo e Ervas à encomenda" data-product="Quiche de Queijo e Ervas">
+                <span class="material-symbols-outlined">add</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="bebidas" data-name="cafe coado especial"
+          data-slug="cafe-coado-especial">
+          <div class="product-card__media"
+            style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80');">
+          </div>
+          <div class="product-card__body">
+            <span class="product-card__tag">Bebida</span>
+            <h3 class="product-card__name">Café Coado Especial</h3>
+            <p class="product-card__desc">Grãos torrados na medida, servido fresco a cada pedido.</p>
+            <div class="product-card__footer">
+              <span class="product-card__price">R$ 9,00</span>
+              <button class="product-card__add" type="button" aria-label="Adicionar Café Coado Especial à encomenda"
+                data-product="Café Coado Especial">
+                <span class="material-symbols-outlined">add</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- ===== 7º Item: Pão de Queijo Artesanal ===== -->
+        <article class="product-card" data-category="paes" data-name="pao de queijo artesanal"
+          data-slug="pao-queijo-artesanal">
+          <div class="product-card__media"
+            style="background-image: url('https://images.unsplash.com/photo-1598373182133-52452f7691ef?auto=format&fit=crop&w=1200&q=80');">
+          </div>
+          <div class="product-card__body">
+            <span class="product-card__tag">Pão</span>
+            <h3 class="product-card__name">Pão de Queijo Artesanal</h3>
+            <p class="product-card__desc">Receita mineira tradicional, macio por dentro e levemente crocante por fora.
+            </p>
+            <div class="product-card__footer">
+              <span class="product-card__price">R$ 8,00</span>
+              <button class="product-card__add" type="button" aria-label="Adicionar Pão de Queijo Artesanal à encomenda"
+                data-product="Pão de Queijo Artesanal">
+                <span class="material-symbols-outlined">add</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- ===== 8º Item: Empada de Frango ===== -->
+        <article class="product-card" data-category="salgados" data-name="empada de frango"
+          data-slug="empada-de-frango">
+          <div class="product-card__media"
+            style="background-image: url('https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=1200&q=80');">
+          </div>
+          <div class="product-card__body">
+            <span class="product-card__tag">Salgado</span>
+            <h3 class="product-card__name">Empada de Frango</h3>
+            <p class="product-card__desc">Massa amanteigada recheada com frango desfiado e temperos da casa.</p>
+            <div class="product-card__footer">
+              <span class="product-card__price">R$ 11,00</span>
+              <button class="product-card__add" type="button" aria-label="Adicionar Empada de Frango à encomenda"
+                data-product="Empada de Frango">
+                <span class="material-symbols-outlined">add</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="bebidas" data-name="suco natural de laranja"
+          data-slug="suco-natural-laranja">
+          <div class="product-card__media"
+            style="background-image: url('https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=1200&q=80');">
+          </div>
+          <div class="product-card__body">
+            <span class="product-card__tag">Bebida</span>
+            <h3 class="product-card__name">Suco Natural de Laranja</h3>
+            <p class="product-card__desc">Laranjas espremidas na hora, sem adição de açúcar.</p>
+            <div class="product-card__footer">
+              <span class="product-card__price">R$ 10,00</span>
+              <button class="product-card__add" type="button" aria-label="Adicionar Suco Natural de Laranja à encomenda"
+                data-product="Suco Natural de Laranja">
+                <span class="material-symbols-outlined">add</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WhatsApp FAB ===== -->
+  <a class="whatsapp-fab" href="https://wa.me/556599943679?text=Olá!%20Gostaria%20de%20fazer%20uma%20encomenda."
+    target="_blank" rel="noopener" aria-label="Contato via WhatsApp">
+    <span class="material-symbols-outlined">chat</span>
+  </a>
+
+  <!-- ===== Bottom nav (mobile) ===== -->
+  <nav class="bottom-nav" aria-label="Navegação inferior móvel">
+
+    <a class="bottom-nav__item" href="index.html" data-bottom-nav>
+      <span class="material-symbols-outlined">home</span>
+      <span>Início</span>
+    </a>
+
+    <a class="bottom-nav__item bottom-nav__item--active" href="produtos.html" data-bottom-nav>
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bakery_dining</span>
+      <span>Produtos</span>
+    </a>
+
+    <a class="bottom-nav__item" href="encomendas.html" data-bottom-nav>
+      <span class="material-symbols-outlined">shopping_bag</span>
+      <span>Encomendas</span>
+    </a>
+
+    <a class="bottom-nav__item" href="contato.html" data-bottom-nav>
+      <span class="material-symbols-outlined">contact_support</span>
+      <span>Contatos</span>
+    </a>
   </nav>
-</header>
 
-<!-- ===== Barra de busca + filtros (fixa no topo, abaixo do header) ===== -->
-<div class="product-toolbar" id="productToolbar">
-  <div class="container product-toolbar__inner">
-
-    <label class="product-search" for="productSearch">
-      <span class="material-symbols-outlined product-search__icon">search</span>
-      <input
-        type="search"
-        id="productSearch"
-        class="product-search__input"
-        placeholder="Buscar produto..."
-        aria-label="Buscar produto"
-        autocomplete="off"
-      />
-    </label>
-
-    <div class="product-filters" id="productFilters" role="group" aria-label="Filtrar por categoria">
-      <button type="button" class="product-filters__chip product-filters__chip--active" data-filter="todos">Todos</button>
-      <button type="button" class="product-filters__chip" data-filter="paes">Pães</button>
-      <button type="button" class="product-filters__chip" data-filter="doces">Doces</button>
-      <button type="button" class="product-filters__chip" data-filter="salgados">Salgados</button>
-      <button type="button" class="product-filters__chip" data-filter="bebidas">Bebidas</button>
-    </div>
-
-  </div>
-</div>
-
-<!-- ===== Produtos ===== -->
-<section class="section" id="produtos">
-  <div class="container">
-    <div class="section__header">
-      <span class="eyebrow">Nosso Cardápio</span>
-      <h2 class="section-title section__title">Produtos em Destaque</h2>
-      <p class="section__desc">Uma seleção do que sai do forno todos os dias, feita com fermentação natural e ingredientes selecionados.</p>
-    </div>
-
-    <p class="product-empty" id="productEmpty" hidden>Nenhum produto encontrado para essa busca.</p>
-
-    <div class="product-grid" id="productGrid">
-
-      <article class="product-card" data-category="doces" data-name="croissant amanteigado" data-slug="croissant-amanteigado">
-        <div class="product-card__media" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCsQr1sWccbuvd-DQKGnfe_bzwk0vQipI538hsKyqZoj9d0FA0p8-XXEju8wEsZjIYcUA2FQBGES36yvV0tZKHJKxF6BCu_xez2ppv1gyx4mF9PwdW0U6SzLMbR7CkOu1Yfx-6Tl4x7TADh3VDv0VJdVPYDKLbC2nRVnB0gvoC95TL_Ag-m2evOWM-7eCjUZyNY6EG3s595D_tNUEWUxd4DOGnXnCo8BSUihP-oWPBlZlh7UK7kruvT');"></div>
-        <div class="product-card__body">
-          <span class="product-card__tag">Doce</span>
-          <h3 class="product-card__name">Croissant Amanteigado</h3>
-          <p class="product-card__desc">Massa folhada de 27 camadas, manteiga francesa e fermentação de 24h.</p>
-          <div class="product-card__footer">
-            <span class="product-card__price">R$ 14,00</span>
-            <button class="product-card__add" type="button" aria-label="Adicionar Croissant Amanteigado à encomenda" data-product="Croissant Amanteigado">
-              <span class="material-symbols-outlined">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card" data-category="paes" data-name="pao de fermentacao natural" data-slug="pao-fermentacao-natural">
-        <div class="product-card__media" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80');"></div>
-        <div class="product-card__body">
-          <span class="product-card__tag">Pão</span>
-          <h3 class="product-card__name">Pão de Fermentação Natural</h3>
-          <p class="product-card__desc">Levain de cultivo próprio, casca crocante e miolo aerado.</p>
-          <div class="product-card__footer">
-            <span class="product-card__price">R$ 22,00</span>
-            <button class="product-card__add" type="button" aria-label="Adicionar Pão de Fermentação Natural à encomenda" data-product="Pão de Fermentação Natural">
-              <span class="material-symbols-outlined">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card" data-category="doces" data-name="tarte au citron" data-slug="tarte-au-citron">
-        <div class="product-card__media" style="background-image: url('https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1200&q=80');"></div>
-        <div class="product-card__body">
-          <span class="product-card__tag">Doce</span>
-          <h3 class="product-card__name">Tarte au Citron</h3>
-          <p class="product-card__desc">Creme de limão siciliano sobre base amanteigada e merengue maçaricado.</p>
-          <div class="product-card__footer">
-            <span class="product-card__price">R$ 18,00</span>
-            <button class="product-card__add" type="button" aria-label="Adicionar Tarte au Citron à encomenda" data-product="Tarte au Citron">
-              <span class="material-symbols-outlined">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card" data-category="paes" data-name="baguete tradicional" data-slug="baguete-tradicional">
-        <div class="product-card__media" style="background-image: url('https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=1200&q=80');"></div>
-        <div class="product-card__body">
-          <span class="product-card__tag">Pão</span>
-          <h3 class="product-card__name">Baguete Tradicional</h3>
-          <p class="product-card__desc">Receita clássica francesa, casca dourada e crocante por fora.</p>
-          <div class="product-card__footer">
-            <span class="product-card__price">R$ 12,00</span>
-            <button class="product-card__add" type="button" aria-label="Adicionar Baguete Tradicional à encomenda" data-product="Baguete Tradicional">
-              <span class="material-symbols-outlined">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card" data-category="salgados" data-name="quiche de queijo e ervas" data-slug="quiche-queijo-ervas">
-        <div class="product-card__media" style="background-image: url('https://images.unsplash.com/photo-1623334044303-241021148842?auto=format&fit=crop&w=1200&q=80');"></div>
-        <div class="product-card__body">
-          <span class="product-card__tag">Salgado</span>
-          <h3 class="product-card__name">Quiche de Queijo e Ervas</h3>
-          <p class="product-card__desc">Massa amanteigada com recheio cremoso de queijos e ervas finas.</p>
-          <div class="product-card__footer">
-            <span class="product-card__price">R$ 16,00</span>
-            <button class="product-card__add" type="button" aria-label="Adicionar Quiche de Queijo e Ervas à encomenda" data-product="Quiche de Queijo e Ervas">
-              <span class="material-symbols-outlined">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card" data-category="bebidas" data-name="cafe coado especial" data-slug="cafe-coado-especial">
-        <div class="product-card__media" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80');"></div>
-        <div class="product-card__body">
-          <span class="product-card__tag">Bebida</span>
-          <h3 class="product-card__name">Café Coado Especial</h3>
-          <p class="product-card__desc">Grãos torrados na medida, servido fresco a cada pedido.</p>
-          <div class="product-card__footer">
-            <span class="product-card__price">R$ 9,00</span>
-            <button class="product-card__add" type="button" aria-label="Adicionar Café Coado Especial à encomenda" data-product="Café Coado Especial">
-              <span class="material-symbols-outlined">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <!-- ===== 7º Item: Pão de Queijo Artesanal ===== -->
-<article class="product-card" data-category="paes" data-name="pao de queijo artesanal" data-slug="pao-queijo-artesanal">
-  <div class="product-card__media" style="background-image: url('https://images.unsplash.com/photo-1598373182133-52452f7691ef?auto=format&fit=crop&w=1200&q=80');"></div>
-  <div class="product-card__body">
-    <span class="product-card__tag">Pão</span>
-    <h3 class="product-card__name">Pão de Queijo Artesanal</h3>
-    <p class="product-card__desc">Receita mineira tradicional, macio por dentro e levemente crocante por fora.</p>
-    <div class="product-card__footer">
-      <span class="product-card__price">R$ 8,00</span>
-      <button class="product-card__add" type="button" aria-label="Adicionar Pão de Queijo Artesanal à encomenda" data-product="Pão de Queijo Artesanal">
-        <span class="material-symbols-outlined">add</span>
-      </button>
-    </div>
-  </div>
-</article>
-
-<!-- ===== 8º Item: Empada de Frango ===== -->
-<article class="product-card" data-category="salgados" data-name="empada de frango" data-slug="empada-de-frango">
-  <div class="product-card__media" style="background-image: url('https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=1200&q=80');"></div>
-  <div class="product-card__body">
-    <span class="product-card__tag">Salgado</span>
-    <h3 class="product-card__name">Empada de Frango</h3>
-    <p class="product-card__desc">Massa amanteigada recheada com frango desfiado e temperos da casa.</p>
-    <div class="product-card__footer">
-      <span class="product-card__price">R$ 11,00</span>
-      <button class="product-card__add" type="button" aria-label="Adicionar Empada de Frango à encomenda" data-product="Empada de Frango">
-        <span class="material-symbols-outlined">add</span>
-      </button>
-    </div>
-  </div>
-</article>
-
-      <article class="product-card" data-category="bebidas" data-name="suco natural de laranja" data-slug="suco-natural-laranja">
-        <div class="product-card__media" style="background-image: url('https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=1200&q=80');"></div>
-        <div class="product-card__body">
-          <span class="product-card__tag">Bebida</span>
-          <h3 class="product-card__name">Suco Natural de Laranja</h3>
-          <p class="product-card__desc">Laranjas espremidas na hora, sem adição de açúcar.</p>
-          <div class="product-card__footer">
-            <span class="product-card__price">R$ 10,00</span>
-            <button class="product-card__add" type="button" aria-label="Adicionar Suco Natural de Laranja à encomenda" data-product="Suco Natural de Laranja">
-              <span class="material-symbols-outlined">add</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== WhatsApp FAB ===== -->
-<a class="whatsapp-fab" href="https://wa.me/556599943676?text=Olá!%20Gostaria%20de%20fazer%20uma%20encomenda." target="_blank" rel="noopener" aria-label="Contato via WhatsApp">
-  <span class="material-symbols-outlined">chat</span>
-</a>
-
-<!-- ===== Bottom nav (mobile) ===== -->
-<nav class="bottom-nav" aria-label="Navegação inferior móvel">
-
-  <a class="bottom-nav__item" href="index.html" data-bottom-nav>
-    <span class="material-symbols-outlined">home</span>
-    <span>Início</span>
-  </a>
-
-  <a class="bottom-nav__item bottom-nav__item--active" href="produtos.html" data-bottom-nav>
-    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bakery_dining</span>
-    <span>Produtos</span>
-  </a>
-
-  <a class="bottom-nav__item" href="encomendas.html" data-bottom-nav>
-    <span class="material-symbols-outlined">shopping_bag</span>
-    <span>Encomendas</span>
-  </a>
-
-  <a class="bottom-nav__item" href="contato.html" data-bottom-nav>
-    <span class="material-symbols-outlined">contact_support</span>
-    <span>Contatos</span>
-  </a>
-</nav>
-
-<script src="produtos-data.js"></script>
-<script src="produto.js"></script>
+  <script src="produtos-data.js"></script>
+  <script src="produto.js"></script>
 </body>
+
 </html>
