@@ -563,12 +563,21 @@ body {
     aspect-ratio: 4 / 3;
     border-radius: 8px;
   }
+  
+  /* Adiciona margem nas laterais do mapa no mobile */
+  .footer-map {
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
 
 /* ---------- Bloco Texto + Mapa (footer-layout) ----------
    Mobile: coluna esquerda (texto) em cima, coluna direita (mapa) embaixo.
    Desktop (≥768px): lado a lado.
    Fundo escuro, igual ao rodapé (.site-footer) logo abaixo. */
+/* ---------- Bloco Texto + Mapa (footer-layout) ---------- */
 .footer-layout-wrap {
   background-color: var(--color-tertiary);
 }
@@ -577,14 +586,16 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   gap: 28px;
-  align-items: start;
+  align-items: center; /* Centraliza verticalmente no mobile/geral */
   padding: 56px 0 40px;
 }
 
 @media (min-width: 768px) {
   .footer-layout {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 20px;
+    gap: 40px;
+    align-items: center;    /* Centraliza as colunas na vertical */
+    justify-items: center;  /* Centraliza as colunas na horizontal dentro de cada célula */
   }
 }
 
@@ -604,10 +615,8 @@ body {
 }
 
 .footer-logo {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-lg);
-  object-fit: cover;
+  width: auto;
+  height: 100px;
   margin-bottom: 12px;
 }
 
@@ -671,7 +680,7 @@ body {
 /* Em telas muito estreitas, reduz um pouco os espaçamentos */
 @media (max-width: 420px) {
   .footer-layout { gap: 20px; }
-  .footer-logo { width: 44px; height: 44px; }
+  .footer-logo { width: auto; height: 100px; }
   .footer-brand__desc { font-size: 12px; }
   .footer-map__address { font-size: 11px; }
 }
@@ -733,6 +742,8 @@ body {
 .site-footer .footer-brand__desc {
   color: rgba(255, 255, 255, 0.7);
   margin: 0 auto;
+  max-width: none; /* Remove qualquer limite de largura anterior */
+  white-space: nowrap; /* Garante que o texto não quebre em nenhuma hipótese */
 }
 
 /* ---------- WhatsApp FAB ---------- */
