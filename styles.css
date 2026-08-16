@@ -565,33 +565,58 @@ body {
   }
 }
 
-/* ---------- Footer ---------- */
-.site-footer {
+/* ---------- Bloco Texto + Mapa (footer-layout) ----------
+   Mobile: coluna esquerda (texto) em cima, coluna direita (mapa) embaixo.
+   Desktop (≥768px): lado a lado.
+   Fundo escuro, igual ao rodapé (.site-footer) logo abaixo. */
+.footer-layout-wrap {
   background-color: var(--color-tertiary);
-  color: var(--color-on-tertiary);
-  padding: 48px 0;
-  margin-bottom: 0;
 }
 
-@media (max-width: 767px) {
-  .site-footer { margin-bottom: 20px; }
-}
-
-.footer-inner {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gutter);
+.footer-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: start;
+  padding: 56px 0 40px;
 }
 
 @media (min-width: 768px) {
-  .footer-inner { flex-direction: row; justify-content: space-between; }
+  .footer-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 20px;
+  }
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  min-width: 0;
+}
+
+@media (max-width: 767px) {
+  .footer-content {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.footer-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  margin-bottom: 12px;
 }
 
 .footer-brand__name {
   font-family: var(--font-display);
   font-size: var(--fs-headline);
   display: block;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+  color: var(--color-on-tertiary);
 }
 
 .footer-brand__desc {
@@ -599,6 +624,29 @@ body {
   max-width: 320px;
   margin: 0;
   font-size: 14px;
+}
+
+.footer-map {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+@media (max-width: 767px) {
+  .footer-map {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.footer-map__address {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  margin: 0 0 10px;
+}
+
+.footer-map .eyebrow {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .footer-nav {
@@ -618,6 +666,73 @@ body {
 .footer-nav a:hover {
   color: var(--color-tertiary-fixed);
   opacity: 0.85;
+}
+
+/* Em telas muito estreitas, reduz um pouco os espaçamentos */
+@media (max-width: 420px) {
+  .footer-layout { gap: 20px; }
+  .footer-logo { width: 44px; height: 44px; }
+  .footer-brand__desc { font-size: 12px; }
+  .footer-map__address { font-size: 11px; }
+}
+
+/* ---------- Seção mutada (fundo levemente diferente) ---------- */
+.section--muted {
+  background-color: var(--color-surface-container);
+}
+
+/* ---------- Ícones sociais do footer ---------- */
+.footer-social {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+@media (max-width: 767px) {
+  .footer-social {
+    justify-content: center;
+  }
+}
+
+.footer-social__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-on-tertiary);
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.footer-social__link svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.footer-social__link:hover {
+  background-color: var(--color-accent);
+  transform: translateY(-3px);
+}
+
+/* ---------- Footer (rodapé final, só copyright) ---------- */
+.site-footer {
+  background-color: var(--color-tertiary);
+  color: var(--color-on-tertiary);
+  padding: 20px 0;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .site-footer { margin-bottom: 20px; }
+}
+
+.site-footer .footer-brand__desc {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 auto;
 }
 
 /* ---------- WhatsApp FAB ---------- */

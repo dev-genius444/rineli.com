@@ -165,10 +165,49 @@ body {
   gap: 32px;
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-primary);
+}
+
+.brand__icon { font-size: 26px; line-height: 1; }
+
+.brand__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-headline);
+  font-weight: 700;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.nav-desktop {
+  display: none;
+  align-items: center;
+  gap: 32px;
+}
+
+/* Organiza o link da marca para alinhar os itens horizontalmente */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaço entre a logo e o texto */
+  text-decoration: none;
+}
+
+/* Controla o tamanho da imagem da logo */
 .brand__logo {
-  height: 40px; /* Ajuste para o tamanho ideal no seu layout */
+  height: 40px; /* Ajuste a altura conforme necessário */
   width: auto;
   display: block;
+}
+
+/* Estiliza o texto ao lado da logo */
+.brand__name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333; /* Altere para a cor desejada do seu tema */
 }
 
 @media (min-width: 768px) {

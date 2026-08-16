@@ -1,0 +1,252 @@
+/* ============================================
+   L'Artisan Boulangerie — detalhe.css
+   Página de detalhe do produto
+   ============================================ */
+
+/* ---------- Reset básico ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { font: inherit; cursor: pointer; border: none; background: none; }
+
+/* ---------- Design tokens (mesmos do resto do site) ---------- */
+:root {
+  --color-primary: #561922;
+  --color-primary-container: #722f37;
+  --color-secondary: #8a4e42;
+  --color-tertiary: #3d2b1f;
+
+  --color-background: #fef9f3;
+  --color-surface-container: #f2ede7;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-surface: #1d1b18;
+  --color-on-surface-variant: #534343;
+  --color-outline-variant: #d8c1c2;
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Montserrat", -apple-system, sans-serif;
+
+  --margin-mobile: 20px;
+  --margin-desktop: 64px;
+  --container-max: 900px;
+  --radius: 4px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  --shadow-soft: 0 10px 30px rgba(61, 43, 31, 0.08);
+  --shadow-top: 0 -6px 20px rgba(61, 43, 31, 0.08);
+  --transition: 0.3s ease;
+}
+
+body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+  color: var(--color-on-surface);
+  background-color: var(--color-background);
+  padding-bottom: 96px; /* espaço pra barra de ação fixa embaixo */
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-left: var(--margin-mobile);
+  padding-right: var(--margin-mobile);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: var(--margin-desktop);
+    padding-right: var(--margin-desktop);
+  }
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.site-header__inner {
+  padding: 16px var(--margin-mobile);
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .site-header__inner { padding: 16px var(--margin-desktop); }
+}
+
+.detail-back {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.detail-back .material-symbols-outlined {
+  font-size: 22px;
+}
+
+/* ---------- Imagem principal ---------- */
+.detail-main-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--color-surface-container);
+  transition: opacity 0.25s ease;
+}
+
+@media (min-width: 768px) {
+  .detail-main-image {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    aspect-ratio: 16 / 10;
+    border-radius: var(--radius-lg);
+    margin-top: 16px;
+  }
+}
+
+/* ---------- Galeria que desliza pro lado (swipe) ----------
+   overflow-x: auto + scroll-snap dá a sensação nativa de "arrastar"
+   as fotos no celular, sem precisar de nenhuma biblioteca JS. */
+.detail-gallery {
+  display: flex;
+  gap: 10px;
+  padding: 14px var(--margin-mobile);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.detail-gallery::-webkit-scrollbar { display: none; }
+
+@media (min-width: 768px) {
+  .detail-gallery {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 14px var(--margin-desktop);
+  }
+}
+
+.detail-gallery__thumb {
+  flex-shrink: 0;
+  width: 84px;
+  height: 84px;
+  border-radius: var(--radius-lg);
+  background-size: cover;
+  background-position: center;
+  border: 2px solid transparent;
+  scroll-snap-align: start;
+  opacity: 0.6;
+  transition: opacity var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+.detail-gallery__thumb:hover {
+  opacity: 0.9;
+}
+
+.detail-gallery__thumb--active {
+  opacity: 1;
+  border-color: var(--color-primary-container);
+  transform: translateY(-2px);
+}
+
+/* ---------- Informações do produto ---------- */
+.detail-info {
+  padding-top: 8px;
+}
+
+.detail-info__tag {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-container);
+  color: var(--color-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.detail-info__name {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-tertiary);
+  margin: 0 0 8px;
+  line-height: 1.25;
+}
+
+@media (min-width: 768px) {
+  .detail-info__name { font-size: 34px; }
+}
+
+.detail-info__price {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-primary-container);
+  margin: 0 0 16px;
+}
+
+.detail-info__desc {
+  font-size: 15px;
+  color: var(--color-on-surface-variant);
+  margin: 0;
+  max-width: 640px;
+}
+
+/* ---------- Barra de ação fixa embaixo ---------- */
+.detail-action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  background-color: var(--color-surface-container-lowest);
+  box-shadow: var(--shadow-top);
+  padding: 14px 0;
+}
+
+.detail-action-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.detail-action-bar__price {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primary-container);
+  white-space: nowrap;
+}
+
+.btn--primary {
+  background-color: var(--color-primary-container);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: opacity var(--transition);
+}
+
+.btn--primary:hover { opacity: 0.9; }
+
+.detail-action-bar__btn {
+  flex-shrink: 0;
+}

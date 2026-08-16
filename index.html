@@ -1,184 +1,233 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>L'Artisan Boulangerie — Tradição &amp; Elegância</title>
-<meta name="description" content="Pães de fermentação natural e pâtisserie refinada. Faça sua encomenda em L'Artisan Boulangerie." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L'Artisan Boulangerie — Tradição &amp; Elegância</title>
+  <meta name="description"
+    content="Pães de fermentação natural e pâtisserie refinada. Faça sua encomenda em L'Artisan Boulangerie." />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
 
-<link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
-<!-- ===== Header ===== -->
-<header class="site-header">
-  <div class="container site-header__inner">
-    <a href="index.html" class="brand">
-      <img src="assets/logo.png" alt="L'Artisan Boulangerie" class="brand__logo">
-      <span class="brand__name">L'Artisan Boulangerie</span>
-    </a>
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="brand">
+        <img src="assets/logo.png" alt="L'Artisan Boulangerie" class="brand__logo">
+        <span class="brand__name">Confeitaria Rineli</span>
+      </a>
 
-    <nav class="nav-desktop" aria-label="Navegação principal">
-      <a class="nav-link nav-link--active" href="index.html">Início</a>
+      <nav class="nav-desktop" aria-label="Navegação principal">
+        <a class="nav-link nav-link--active" href="index.html">Início</a>
+        <a class="nav-link" href="produtos.html">Produtos</a>
+        <a class="nav-link" href="./encomendas.html">Encomendas</a>
+        <a class="nav-link" href="#contato">Contato</a>
+      </nav>
+
+      <button class="nav-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="navMobile"
+        aria-label="Abrir menu">
+        <span class="material-symbols-outlined" id="navToggleIcon">menu</span>
+      </button>
+    </div>
+
+    <nav class="nav-mobile" id="navMobile" aria-label="Navegação móvel" hidden>
+      <a class="nav-link nav-link--active" href="#inicio">Início</a>
       <a class="nav-link" href="produtos.html">Produtos</a>
       <a class="nav-link" href="./encomendas.html">Encomendas</a>
-      <a class="nav-link" href="#contato">Contato</a>
+      <a class="nav-link" href="contato.html">Contato</a>
     </nav>
+  </header>
 
-    <button class="nav-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="navMobile" aria-label="Abrir menu">
-      <span class="material-symbols-outlined" id="navToggleIcon">menu</span>
-    </button>
-  </div>
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="inicio">
+    <div class="hero__bg"
+      style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDpIG6BmBNPKiN-aLq5fLu0leCeNJ77uI_nu_e9m46SMheAHdVDyhIzTrLpg6AjsJHYZM9RTHl1sPdlH2kptXUCSfh6SYXaZp8foHsD3OmCICCNy-oaxn0d78xFsxuCNiAm5C5bJT97pll_-dRNDnxxOnE5OElys7DriB_m8mc7KORbaTHhLxkX-cRYAnXxm8tsCJ31C233dmLRVUN1f5JTCi9xZmHgZYqb4faKTgAjBP--ck3pSV6j');"
+      role="img" aria-label="Pastéis e pães artesanais recém-assados sobre bancada de mármore"></div>
+    <div class="hero__scrim"></div>
 
-  <nav class="nav-mobile" id="navMobile" aria-label="Navegação móvel" hidden>
-    <a class="nav-link nav-link--active" href="#inicio">Início</a>
-    <a class="nav-link" href="produtos.html">Produtos</a>
-    <a class="nav-link" href="./encomendas.html">Encomendas</a>
-    <a class="nav-link" href="contato.html">Contato</a>
+    <div class="hero__content">
+      <span class="eyebrow">Tradição &amp; Elegância</span>
+      <h1 class="hero__title">A Arte da Confeitaria em Cada Detalhe</h1>
+      <p class="hero__subtitle">
+        Ingredientes selecionados, fermentação natural e a paixão por criar momentos inesquecíveis através do paladar.
+      </p>
+      <div class="hero__actions">
+        <a href="encomendas.html" class="btn btn--accent">Fazer Encomenda</a>
+        <a href="produtos.html" class="btn btn--outline">Ver Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Scroll Reveal (efeito estilo Apple com canvas, igual ao projeto do salão) ===== -->
+  <!-- ===== Scroll Reveal: Seção da Cuca ===== -->
+  <section class="scroll-reveal" id="destaques-cuca">
+    <div class="scroll-reveal__pin">
+      <div class="scroll-reveal__stage">
+        <canvas class="scroll-reveal__canvas" id="canvas-cuca"
+          aria-label="Cuca recheada artesanal recém-saída do forno"></canvas>
+      </div>
+      <div class="scroll-reveal__caption">
+        <span class="eyebrow">Tradição e Sabor</span>
+        <h2>A Cuca Recheada Perfeita</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Scroll Reveal: Seção do Bolo ===== -->
+  <section class="scroll-reveal" id="destaques-bolo">
+    <div class="scroll-reveal__pin">
+      <div class="scroll-reveal__stage">
+        <canvas class="scroll-reveal__canvas" id="canvas-bolo" aria-label="Bolo artesanal decorado"></canvas>
+      </div>
+      <div class="scroll-reveal__caption">
+        <span class="eyebrow">Doçura e Sofisticação</span>
+        <h2>Cada Criação, Uma Obra de Arte</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Scroll Reveal: Seção da Pizza ===== -->
+  <section class="scroll-reveal" id="destaques-pizza">
+    <div class="scroll-reveal__pin">
+      <div class="scroll-reveal__stage">
+        <canvas class="scroll-reveal__canvas" id="canvas-pizza"
+          aria-label="Pizza artesanal recém-saída do forno"></canvas>
+      </div>
+      <div class="scroll-reveal__caption">
+        <span class="eyebrow">Feito à mão, todos os dias</span>
+        <h2>A Crocância Perfeita</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Sobre ===== -->
+  <section class="section" id="sobre">
+    <div class="container about">
+      <div class="about__media"
+        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDpIG6BmBNPKiN-aLq5fLu0leCeNJ77uI_nu_e9m46SMheAHdVDyhIzTrLpg6AjsJHYZM9RTHl1sPdlH2kptXUCSfh6SYXaZp8foHsD3OmCICCNy-oaxn0d78xFsxuCNiAm5C5bJT97pll_-dRNDnxxOnE5OElys7DriB_m8mc7KORbaTHhLxkX-cRYAnXxm8tsCJ31C233dmLRVUN1f5JTCi9xZmHgZYqb4faKTgAjBP--ck3pSV6j');"
+        role="img" aria-label="Interior da confeitaria L'Artisan Boulangerie"></div>
+      <div>
+        <span class="eyebrow">Nossa História</span>
+        <h2 class="about__title">Sobre a L'Artisan Boulangerie</h2>
+        <p class="about__text">
+          Nascemos da paixão por técnicas clássicas de panificação francesa, unidas a um olhar contemporâneo sobre sabor
+          e apresentação. Cada receita passa por dias de preparo antes de chegar até você.
+        </p>
+        <p class="about__text">
+          Trabalhamos com fornecedores locais e ingredientes selecionados, priorizando qualidade em cada etapa — da
+          fermentação lenta ao acabamento final.
+        </p>
+        <div class="about__stats">
+          <div class="stat">
+            <span class="stat__number">12</span>
+            <span class="stat__label">anos de tradição</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number">40+</span>
+            <span class="stat__label">receitas artesanais</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="footer-layout-wrap">
+  <div class="container footer-layout">
+
+      <!-- Coluna esquerda: logo, texto, redes -->
+      <div class="footer-content">
+        <img src="./assets/logo.png" alt="Logo Confeitaria Rineli" class="footer-logo">
+
+        <span class="footer-brand__name">Confeitaria Rineli</span>
+        <p class="footer-brand__desc">Artesanal, sofisticado, inesquecível.</p>
+
+        <div class="footer-social" aria-label="Redes sociais">
+          <a class="footer-social__link" href="https://facebook.com/843127585761593/" target="_blank" rel="noopener"
+            aria-label="Facebook">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.14 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.8 8.44-4.94 8.44-9.94Z" />
+            </svg>
+          </a>
+          <a class="footer-social__link" href="https://instagram.com/rineli_delicias_da_lenir" target="_blank"
+            rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 0 1 1.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2Zm0 1.8c-2.67 0-2.99.01-4.04.06-.87.04-1.34.18-1.65.3-.42.16-.71.35-1.02.66-.31.31-.5.6-.66 1.02-.12.31-.26.78-.3 1.65-.05 1.05-.06 1.37-.06 4.04s.01 2.99.06 4.04c.04.87.18 1.34.3 1.65.16.42.35.71.66 1.02.31.31.6.5 1.02.66.31.12.78.26 1.65.3 1.05.05 1.37.06 4.04.06s2.99-.01 4.04-.06c.87-.04 1.34-.18 1.65-.3.42-.16.71-.35 1.02-.66.31-.31.5-.6.66-1.02.12-.31.26-.78.3-1.65.05-1.05.06-1.37.06-4.04s-.01-2.99-.06-4.04c-.04-.87-.18-1.34-.3-1.65a2.74 2.74 0 0 0-.66-1.02 2.74 2.74 0 0 0-1.02-.66c-.31-.12-.78-.26-1.65-.3-1.05-.05-1.37-.06-4.04-.06Zm0 3.06a5.14 5.14 0 1 1 0 10.28 5.14 5.14 0 0 1 0-10.28Zm0 1.8a3.34 3.34 0 1 0 0 6.68 3.34 3.34 0 0 0 0-6.68Zm5.34-1.99a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0Z" />
+            </svg>
+          </a>
+          <a class="footer-social__link"
+            href="https://wa.me/556599943676?text=Olá!%20Gostaria%20de%20fazer%20uma%20encomenda." target="_blank"
+            rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.33 4.97L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.13-2.9-7C17.19 3.03 14.7 2 12.04 2Zm0 1.8c2.19 0 4.24.85 5.78 2.4a8.12 8.12 0 0 1 2.39 5.7c0 4.48-3.65 8.13-8.14 8.13a8.1 8.1 0 0 1-4.14-1.13l-.3-.18-3.11.82.83-3.03-.2-.31a8.06 8.06 0 0 1-1.25-4.32c0-4.49 3.65-8.14 8.14-8.14Zm-4.6 4.36c-.16 0-.42.06-.64.31-.22.24-.85.83-.85 2.02s.87 2.35.99 2.51c.12.16 1.7 2.67 4.19 3.68 2.07.84 2.5.68 2.95.63.45-.04 1.44-.59 1.65-1.15.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28-.24-.12-1.44-.71-1.66-.79-.22-.08-.39-.12-.55.12-.16.24-.63.79-.78.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.35-.76-1.85-.2-.48-.4-.42-.55-.42Z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Coluna direita: mapa -->
+      <div class="footer-map">
+        <span class="eyebrow">Onde Estamos</span>
+        <p class="footer-map__address">Lucas do Rio Verde - MT, 78455-000</p>
+        <div class="contact-map">
+          <iframe
+            src="https://www.google.com/maps?q=Lucas+do+Rio+Verde+MT+78455000&output=embed"
+            title="Mapa de localização — Confeitaria Rineli"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ===== Footer com mapa ===== -->
+  <footer class="site-footer" id="contato">
+     <p class="footer-brand__desc" style="margin-top: 8px;">© 2026 Confeitaria Rineli — Tradição e Elegância.</p>
+  </footer>
+
+  <!-- ===== WhatsApp FAB ===== -->
+  <a class="whatsapp-fab" href="https://wa.me/556599943676?text=Olá!%20Gostaria%20de%20fazer%20uma%20encomenda."
+    target="_blank" rel="noopener" aria-label="Contato via WhatsApp">
+    <span class="material-symbols-outlined">chat</span>
+  </a>
+
+  <!-- ===== Bottom nav (mobile) ===== -->
+  <nav class="bottom-nav" aria-label="Navegação inferior móvel">
+    <a class="bottom-nav__item bottom-nav__item--active" href="index.html" data-bottom-nav>
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+      <span>Início</span>
+    </a>
+    <a class="bottom-nav__item" href="produtos.html" data-bottom-nav>
+      <span class="material-symbols-outlined">bakery_dining</span>
+      <span>Produtos</span>
+    </a>
+    <a class="bottom-nav__item" href="encomendas.html" data-bottom-nav>
+      <span class="material-symbols-outlined">shopping_bag</span>
+      <span>Encomendas</span>
+    </a>
+    <a class="bottom-nav__item" href="contato.html" data-bottom-nav>
+      <span class="material-symbols-outlined">contact_support</span>
+      <span>Contatos</span>
+    </a>
   </nav>
-</header>
 
-<!-- ===== Hero ===== -->
-<section class="hero" id="inicio">
-  <div class="hero__bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDpIG6BmBNPKiN-aLq5fLu0leCeNJ77uI_nu_e9m46SMheAHdVDyhIzTrLpg6AjsJHYZM9RTHl1sPdlH2kptXUCSfh6SYXaZp8foHsD3OmCICCNy-oaxn0d78xFsxuCNiAm5C5bJT97pll_-dRNDnxxOnE5OElys7DriB_m8mc7KORbaTHhLxkX-cRYAnXxm8tsCJ31C233dmLRVUN1f5JTCi9xZmHgZYqb4faKTgAjBP--ck3pSV6j');" role="img" aria-label="Pastéis e pães artesanais recém-assados sobre bancada de mármore"></div>
-  <div class="hero__scrim"></div>
-
-  <div class="hero__content">
-    <span class="eyebrow">Tradição &amp; Elegância</span>
-    <h1 class="hero__title">A Arte da Confeitaria em Cada Detalhe</h1>
-    <p class="hero__subtitle">
-      Ingredientes selecionados, fermentação natural e a paixão por criar momentos inesquecíveis através do paladar.
-    </p>
-    <div class="hero__actions">
-      <button class="btn btn--accent" type="button" data-scroll-to="#encomendas">Fazer Encomenda</button>
-      <button class="btn btn--outline" type="button" data-scroll-to="#produtos">Ver Menu</button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Scroll Reveal (efeito estilo Apple com canvas, igual ao projeto do salão) ===== -->
-<!-- ===== Scroll Reveal: Seção da Cuca ===== -->
-<section class="scroll-reveal" id="destaques-cuca">
-  <div class="scroll-reveal__pin">
-    <div class="scroll-reveal__stage">
-      <canvas class="scroll-reveal__canvas" id="canvas-cuca" aria-label="Cuca recheada artesanal recém-saída do forno"></canvas>
-    </div>
-    <div class="scroll-reveal__caption">
-      <span class="eyebrow">Tradição e Sabor</span>
-      <h2>A Cuca Recheada Perfeita</h2>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Scroll Reveal: Seção do Bolo ===== -->
-<section class="scroll-reveal" id="destaques-bolo">
-  <div class="scroll-reveal__pin">
-    <div class="scroll-reveal__stage">
-      <canvas class="scroll-reveal__canvas" id="canvas-bolo" aria-label="Bolo artesanal decorado"></canvas>
-    </div>
-    <div class="scroll-reveal__caption">
-      <span class="eyebrow">Doçura e Sofisticação</span>
-      <h2>Cada Criação, Uma Obra de Arte</h2>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Scroll Reveal: Seção da Pizza ===== -->
-<section class="scroll-reveal" id="destaques-pizza">
-  <div class="scroll-reveal__pin">
-    <div class="scroll-reveal__stage">
-      <canvas class="scroll-reveal__canvas" id="canvas-pizza" aria-label="Pizza artesanal recém-saída do forno"></canvas>
-    </div>
-    <div class="scroll-reveal__caption">
-      <span class="eyebrow">Feito à mão, todos os dias</span>
-      <h2>A Crocância Perfeita</h2>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Sobre ===== -->
-<section class="section" id="sobre">
-  <div class="container about">
-    <div class="about__media" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDpIG6BmBNPKiN-aLq5fLu0leCeNJ77uI_nu_e9m46SMheAHdVDyhIzTrLpg6AjsJHYZM9RTHl1sPdlH2kptXUCSfh6SYXaZp8foHsD3OmCICCNy-oaxn0d78xFsxuCNiAm5C5bJT97pll_-dRNDnxxOnE5OElys7DriB_m8mc7KORbaTHhLxkX-cRYAnXxm8tsCJ31C233dmLRVUN1f5JTCi9xZmHgZYqb4faKTgAjBP--ck3pSV6j');" role="img" aria-label="Interior da confeitaria L'Artisan Boulangerie"></div>
-    <div>
-      <span class="eyebrow">Nossa História</span>
-      <h2 class="about__title">Sobre a L'Artisan Boulangerie</h2>
-      <p class="about__text">
-        Nascemos da paixão por técnicas clássicas de panificação francesa, unidas a um olhar contemporâneo sobre sabor e apresentação. Cada receita passa por dias de preparo antes de chegar até você.
-      </p>
-      <p class="about__text">
-        Trabalhamos com fornecedores locais e ingredientes selecionados, priorizando qualidade em cada etapa — da fermentação lenta ao acabamento final.
-      </p>
-      <div class="about__stats">
-        <div class="stat">
-          <span class="stat__number">12</span>
-          <span class="stat__label">anos de tradição</span>
-        </div>
-        <div class="stat">
-          <span class="stat__number">40+</span>
-          <span class="stat__label">receitas artesanais</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Footer ===== -->
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div>
-      <span class="footer-brand__name">L'Artisan Boulangerie</span>
-      <p class="footer-brand__desc">Artesanal, sofisticado, inesquecível.</p>
-      <p class="footer-brand__desc" style="margin-top: 12px;">© 2024 L'Artisan Boulangerie — Tradição e Elegância.</p>
-    </div>
-    <!-- ===== Contato ===== -->
-<section class="section section--muted" id="contato">
-  <div class="container">
-      <div class="contact-map">
-        <iframe
-          src="https://www.google.com/maps?q=Rua+das+Flores,123,Centro&output=embed"
-          title="Mapa de localização — L'Artisan Boulangerie"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-  </div>
-</section>
-  </div>
-</footer>
-
-<!-- ===== WhatsApp FAB ===== -->
-<a class="whatsapp-fab" href="https://wa.me/5500000000000" target="_blank" rel="noopener" aria-label="Contato via WhatsApp">
-  <span class="material-symbols-outlined">chat</span>
-</a>
-
-<!-- ===== Bottom nav (mobile) ===== -->
-<nav class="bottom-nav" aria-label="Navegação inferior móvel">
-  <a class="bottom-nav__item bottom-nav__item--active" href="index.html" data-bottom-nav>
-    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
-    <span>Início</span>
-  </a>
-  <a class="bottom-nav__item" href="produtos.html" data-bottom-nav>
-    <span class="material-symbols-outlined">bakery_dining</span>
-    <span>Produtos</span>
-  </a>
-  <a class="bottom-nav__item" href="encomendas.html" data-bottom-nav>
-  <span class="material-symbols-outlined">shopping_bag</span>
-  <span>Encomendas</span>
-</a>
-  <a class="bottom-nav__item" href="contato.html" data-bottom-nav>
-    <span class="material-symbols-outlined">contact_support</span>
-    <span>Contatos</span>
-  </a>
-</nav>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>

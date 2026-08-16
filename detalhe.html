@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Detalhe do Produto — L'Artisan Boulangerie</title>
+<meta name="description" content="Confira os detalhes e fotos do produto na L'Artisan Boulangerie." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="detalhe.css" />
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="javascript:void(0)" class="detail-back" id="detailBackButton" aria-label="Voltar para produtos">
+      <span class="material-symbols-outlined">arrow_back</span>
+      <span>Voltar</span>
+    </a>
+  </div>
+</header>
+
+<!-- ===== Detalhe do produto ===== -->
+<main class="detail">
+
+  <!-- Imagem principal -->
+  <div class="detail-main-image" id="detailMainImage" role="img" aria-label="Foto do produto"></div>
+
+  <!-- Galeria que desliza pro lado (swipe) -->
+  <div class="detail-gallery" id="detailGallery" aria-label="Mais fotos do produto — deslize para o lado"></div>
+
+  <!-- Informações do produto -->
+  <div class="container detail-info">
+    <span class="detail-info__tag" id="detailTag"></span>
+    <h1 class="detail-info__name" id="detailName">Carregando...</h1>
+    <p class="detail-info__price" id="detailPrice"></p>
+    <p class="detail-info__desc" id="detailDesc"></p>
+  </div>
+
+</main>
+
+<!-- ===== Barra fixa de ação (embaixo) ===== -->
+<div class="detail-action-bar">
+  <div class="container detail-action-bar__inner">
+    <div class="detail-action-bar__price" id="detailActionPrice"></div>
+    <button type="button" class="btn btn--primary detail-action-bar__btn" id="detailAddButton">
+      Fazer Encomenda
+    </button>
+  </div>
+</div>
+
+<script src="produtos-data.js"></script>
+<script src="produto.js"></script>
+</body>
+</html>
